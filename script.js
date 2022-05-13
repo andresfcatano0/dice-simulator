@@ -5,18 +5,21 @@ let store = [0,0,0,0,0,0,0,0,0,0,0];
 let output = 2;
 let tbody = document.querySelector("tbody");
 let timesRolled = document.querySelector("#timesRolled")
+let button = document.querySelector(".btn");
 
 // Prompt the user to input a valid number of times to roll the dice
-while (valid === false) {
-	rollNum = Number(prompt("How many times do you want to roll the dice?"))
-	if (rollNum !== NaN && rollNum > 0){
-		valid = true;
-		timesRolled.innerHTML = rollNum;
+const runGame = () => {
+	while (valid === false) {
+		rollNum = Number(prompt("How many times do you want to roll the dice?"))
+		if (rollNum !== NaN && rollNum > 0){
+			valid = true;
+			timesRolled.innerHTML = rollNum;
+		}
 	}
 }
 
 // Generate random dice number and store it in array
-function arraypush(){
+const arraypush = () => {
 	for (let i = rollNum; i > 0; i--){
 		dice = 0;
 		dice = Math.floor(Math.random() * 11) + 2;
@@ -25,7 +28,7 @@ function arraypush(){
 }
 
 // Genarate mesagge about number of times a value (from 2 to 12) was rolled
-function message(){
+const message = () => {
 	for (let i = 0; i < store.length; i++){
 		// Calculate the percentage a specific number is rolled
 		pct = Math.round((store[i] / rollNum) * 100);
@@ -40,8 +43,8 @@ function message(){
 	}
 }
 
+runGame();
 arraypush();
 message();
-
 
 
