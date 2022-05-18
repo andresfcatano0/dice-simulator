@@ -5,6 +5,7 @@ let store = [0,0,0,0,0,0,0,0,0,0,0];
 let output = 2;
 let tbody = document.querySelector("tbody");
 let timesRolled = document.querySelector("#timesRolled")
+let button = document.querySelector(".btn");
 
 // Prompt the user to input a valid number of times to roll the dice
 const runGame = () => {
@@ -42,8 +43,20 @@ const message = () => {
 	}
 }
 
+const resetGame = () => {
+	rollNum = 0;
+	valid = false;
+	store = [0,0,0,0,0,0,0,0,0,0,0];
+	output = 2;
+	tbody.innerHTML = "";
+	runGame();
+	arraypush();
+	message();
+}
+
+button.addEventListener("click", resetGame)
+
 runGame();
 arraypush();
 message();
-
 
